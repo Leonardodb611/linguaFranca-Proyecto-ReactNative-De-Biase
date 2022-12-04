@@ -1,25 +1,27 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { NavigationContainer, StackActions } from '@react-navigation/native'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { BottomTabView, createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+
+
 
 import IndexScreen from '../screens/IndexScreen.js'
 import ProfileScreen from '../screens/ProfileScreen.js'
 import GameScreen from '../screens/GameScreen.js'
 import Footer from '../components/Footer.js'
 
-const Stack = createNativeStackNavigator()
+const Tab = createBottomTabNavigator()
 
 const AppNavigation = () => (
     <NavigationContainer>
-        <Stack.Navigator screenOptions={{
-                headerShown: false
+        <Tab.Navigator screenOptions={{
+            headerShown: false
         }}>
-            <Stack.Screen name='Index' component={IndexScreen} options={{ title: 'Inicio' }} />
-            <Stack.Screen name='Profile' component={ProfileScreen} options={{ title: 'Perfil' }} />
-            <Stack.Screen name='Game' component={GameScreen} options={{ title: 'Games' }} />
-        </Stack.Navigator>
-        <Footer />
+            <Tab.Screen name='Inicio' component={IndexScreen}  />
+            <Tab.Screen name='Profile' component={ProfileScreen} options={{ title: 'Perfil' }} />
+            <Tab.Screen name='Game' component={GameScreen} options={{ title: 'Games' }} />
+        </Tab.Navigator>
+        
     </NavigationContainer>
 )
 
