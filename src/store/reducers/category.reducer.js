@@ -12,10 +12,11 @@ const initialState = {
 const CategoryReducer = (state = initialState, action) => {
     
     switch (action.type) {
+        
         case SELECTED_CATEGORY:
             const question = state.categories.find((x) => x.id === action.categoryID)
             
-            return {...state, categories: question}
+            return {categories: question}
             
         default:
             return state
