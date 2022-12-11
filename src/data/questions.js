@@ -2,12 +2,12 @@ const questions = [
     {
         id: 1,
         question: 'They were _______ when they heard the news.',
-        category: 'Adjectives ending ing or ed'
+        category: 'Adjetivos'
     },
     {
         id: 2,
         question: 'This photo shows me in Berlin _____ February. It was really cold',
-        category: 'At, in, on'
+        category: 'Presente perfecto'
     }
 ]
 

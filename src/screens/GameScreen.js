@@ -2,14 +2,16 @@ import { StyleSheet, Text, View, Pressable, FlatList, Image } from 'react-native
 import { useState } from 'react';
 import questions from '../data/questions'
 import answer from '../data/answers'
+import { useSelector, useDispatch, connect } from 'react-redux'
+import { selectedCategory } from '../store/actions/category.actions';
 // Math.ceil(Math.random()*10)
-
-
-
-
 
 const GameScreen = () => {
 
+  const categories = useSelector(state => state.categories.categories)
+  const dispatch = useDispatch()
+
+  console.log(categories)
   const [isStarted, setIsStarted] = useState(false)
   const [game, setGame] = useState(false)
   const [correct, setCorrect] = useState(false)
@@ -23,9 +25,9 @@ const GameScreen = () => {
                     </Pressable>
 
   const randomQuestion = () => {
-
+    
     const randomNumer = Math.ceil(Math.random()*2)
-    let question = questions.find((x) => x.id === randomNumer)
+    let question = dispatch(selectedCategory(randomNumer))
     let words = answer.find((x) => x.id === randomNumer)
     setPregunta(question)
     setRespuestas(words.options)
@@ -115,7 +117,7 @@ const GameScreen = () => {
   )
 }
 
-export default GameScreen
+export default connect()(GameScreen)
 
 const styles = StyleSheet.create({
     container: {

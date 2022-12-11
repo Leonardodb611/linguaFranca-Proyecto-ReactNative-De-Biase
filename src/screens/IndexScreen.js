@@ -1,8 +1,13 @@
-import { StyleSheet, Text, View, Pressable, Image } from 'react-native'
+import { StyleSheet, Text, View, Pressable, Image, FlatList } from 'react-native'
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 const IndexScreen = () => {
+
+  
+  
   return (
+
     <View style={styles.container}>
       <View >
         <Text style={styles.centerText}>BIENVENIDO A LINGUA FRANCA</Text>
@@ -20,6 +25,8 @@ const IndexScreen = () => {
           <Pressable style={styles.Buttons}>
             <Text style={styles.text}>Writting</Text>
           </Pressable>
+          
+          
         </View>
       </View>
 
