@@ -25,10 +25,10 @@ const GameScreen = () => {
                     </Pressable>
 
   const randomQuestion = () => {
-    
+    dispatch(selectedCategory(randomNumer))
     const randomNumer = Math.ceil(Math.random()*2)
-    const question = dispatch(selectedCategory(randomNumer))
-    console.log(question)
+    const question = categories[0]
+    console.log(question, 'hola')
     let words = answer.find((x) => x.id === randomNumer)
     setPregunta(question)
     setRespuestas(words.options)
@@ -70,7 +70,7 @@ const GameScreen = () => {
   if(game){
     content =<View>
           <Text>{pregunta.category}</Text>
-          <Text>{categories.question}</Text>
+          <Text>{pregunta.question}</Text>
           <FlatList
             data={respuestas}
             renderItem={Item}
