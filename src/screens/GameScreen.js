@@ -11,7 +11,7 @@ const GameScreen = () => {
   const categories = useSelector(state => state.categories.categories)
   const dispatch = useDispatch()
 
-  console.log(categories)
+  console.log(pregunta)
   const [isStarted, setIsStarted] = useState(false)
   const [game, setGame] = useState(false)
   const [correct, setCorrect] = useState(false)
@@ -27,7 +27,7 @@ const GameScreen = () => {
   const randomQuestion = () => {
     dispatch(selectedCategory(randomNumer))
     const randomNumer = Math.ceil(Math.random()*2)
-    const question = categories[0]
+    const question = categories
     console.log(question, 'hola')
     let words = answer.find((x) => x.id === randomNumer)
     setPregunta(question)
@@ -69,7 +69,7 @@ const GameScreen = () => {
 
   if(game){
     content =<View>
-          <Text>{pregunta.category}</Text>
+          
           <Text>{pregunta.question}</Text>
           <FlatList
             data={respuestas}
