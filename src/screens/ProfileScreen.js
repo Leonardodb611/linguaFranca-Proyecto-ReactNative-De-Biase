@@ -1,10 +1,39 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Pressable } from 'react-native'
 import React from 'react'
+import question from '../data/questions'
+
+import { collection, addDoc } from "firebase/firestore";
+import {db} from '../services/firestore';
+  
+
+ function handleSubmit(evt) {
+
+  const opcionesTotales = []
+  question.forEach((categoria) =>{
+
+    const preguntas = {
+      id: categoria.id,
+      question: categoria.question,
+      category: categoria.category,
+      options: categoria.options
+    }
+
+   
+    
+    const colecctionref = collection(db, "preguntas")
+    const docRef = addDoc(colecctionref, preguntas)
+  }
+  )
+}
 
 const ProfileScreen = () => {
   return (
     <View style={styles.container}>
-      <Text>ProfileScreen</Text>
+      <Pressable onPress={handleSubmit}> 
+      <Text>
+        holaaa
+        </Text> 
+      </Pressable>
     </View>
   )
 }

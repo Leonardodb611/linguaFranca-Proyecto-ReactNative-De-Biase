@@ -11,7 +11,7 @@ const GameScreen = () => {
   const categories = useSelector(state => state.categories.categories)
   const dispatch = useDispatch()
 
-  console.log(pregunta)
+  console.log(pregunta, 'pregunta')
   const [isStarted, setIsStarted] = useState(false)
   const [game, setGame] = useState(false)
   const [correct, setCorrect] = useState(false)
@@ -25,10 +25,12 @@ const GameScreen = () => {
                     </Pressable>
 
   const randomQuestion = () => {
-    dispatch(selectedCategory(randomNumer))
+    
     const randomNumer = Math.ceil(Math.random()*2)
-    const question = categories
-    console.log(question, 'hola')
+    console.log(randomNumer)
+    dispatch(selectedCategory(randomNumer))
+    const question = categories.find(element => element.id == randomNumer)
+    console.log(question, 'hola1111')
     let words = answer.find((x) => x.id === randomNumer)
     setPregunta(question)
     setRespuestas(words.options)

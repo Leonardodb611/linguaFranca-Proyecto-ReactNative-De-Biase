@@ -2,6 +2,7 @@ import { StyleSheet, Text, View, Image } from 'react-native'
 import React from 'react'
 import  MAP  from '../constants/Map'
 
+
 const MapPreview = ({location, children}) => {
 
     
@@ -12,7 +13,7 @@ const MapPreview = ({location, children}) => {
     &key=${MAP.API_KEY}`
     : "";
 
-    console.log(mapPreviewUrl)
+    
   return (
     <View style={styles.mapPreview}>
       {location ? (
