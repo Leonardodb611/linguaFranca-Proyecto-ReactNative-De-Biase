@@ -4,6 +4,8 @@ import questions from '../data/questions'
 import answer from '../data/answers'
 import { useSelector, useDispatch, connect } from 'react-redux'
 import { selectedCategory } from '../store/actions/category.actions';
+import { collection, query, where, getDocs } from "firebase/firestore";
+import {db} from '../services/firestore';
 // Math.ceil(Math.random()*10)
 
 const GameScreen = () => {
@@ -18,24 +20,36 @@ const GameScreen = () => {
   const [incorrect, setIncorrect] = useState(false)
   const [pregunta, setPregunta] = useState([])
   const [respuestas, setRespuestas] = useState([])
+  let randomNumer = Math.ceil(Math.random()*2)
+  
   let content = <View></View>
   let result = <View></View>
   let startScreen = <Pressable style={styles.Buttons} onPress={()=> randomQuestion()}>
                       <Text>Empezar juego</Text>
                     </Pressable>
 
-  const randomQuestion = () => {
+  const randomQuestion = async () => {
     
-    const randomNumer = Math.ceil(Math.random()*2)
+    
     console.log(randomNumer)
     dispatch(selectedCategory(randomNumer))
     const question = categories.find(element => element.id == randomNumer)
-    console.log(question, 'hola1111')
     let words = answer.find((x) => x.id === randomNumer)
     setPregunta(question)
-    setRespuestas(words.options)
     setGame(true)
     setIsStarted(true)
+
+
+    const q = query(collection(db, "preguntas"), where("id", "==", randomNumer));
+
+      const querySnapshot = await getDocs(q);
+
+      
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        setRespuestas(doc.data().options)
+        console.log(doc.id, " => ", doc.data().question);
+      });
 }
   const resetGame = () => {
     setCorrect(false)
@@ -70,7 +84,7 @@ const GameScreen = () => {
   }
 
   if(game){
-    content =<View>
+    content =<View style={styles.preguntas}>
           
           <Text>{pregunta.question}</Text>
           <FlatList
@@ -107,14 +121,12 @@ const GameScreen = () => {
           
   }
 
-
   return (
     <View style={styles.container}>
       
       {startScreen}
       {content}
       {result}
-      
       
     </View>
   )
@@ -139,5 +151,9 @@ const styles = StyleSheet.create({
         marginBottom: 2,
         marginTop: 2,
         alignItems: 'center'
+    },
+    preguntas: {
+      
+      marginTop: '50%'
     }
 })

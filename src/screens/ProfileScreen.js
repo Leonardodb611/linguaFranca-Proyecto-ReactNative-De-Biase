@@ -4,7 +4,8 @@ import question from '../data/questions'
 
 import { collection, addDoc } from "firebase/firestore";
 import {db} from '../services/firestore';
-  
+
+//screen en proceso actualmente utilizada para subir cosas a firebase :D
 
  function handleSubmit(evt) {
 

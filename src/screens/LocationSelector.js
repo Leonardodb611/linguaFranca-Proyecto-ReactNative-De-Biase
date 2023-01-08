@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, Button, Alert, FlatList} from "react-native";
+import { StyleSheet, Text, View, Button, Alert, FlatList, Pressable} from "react-native";
 import * as Location from "expo-location";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import MapPreview from './MapPreview'
@@ -72,10 +72,9 @@ const LocationSelector = () => {
   );
 
   if(locations.length > 0){
-    ubicacion = <View>
-          
-          
-          <FlatList
+    ubicacion = <View  style={styles.conteiner}>
+          <Text style={styles.text} >Ubicaciones anteriores</Text>
+          <FlatList 
             data={locations}
             renderItem={Item}
           />
@@ -89,14 +88,16 @@ const LocationSelector = () => {
       <MapPreview location={pickedLocation} style={styles.preview}>
         <Text>Location en proceso...</Text>
       </MapPreview>
-      <Button title= "obtener location"
+      <View style={styles.paralelos}>
+      <Pressable style={styles.Buttons}
         onPress={handleGetLocation}>
-  
-      </Button>
-      <Button title= "obtener location1111"
+          <Text>Obtener Ubicacion</Text>
+      </Pressable>
+      <Pressable style={styles.Buttons}
         onPress={loadAddress}>
-  
-      </Button>
+          <Text>Ubicaciones anteriores</Text>
+      </Pressable>
+      </View>
 
       {ubicacion}
       
@@ -111,14 +112,43 @@ const styles = StyleSheet.create({
         
         justifyContent:'center',
         alignItems:'center',
-        marginTop: '10%'
+        
+        flex: 1,
+        backgroundColor: '#efb6d6',
        
       },
     preview: {
-        width: '100%',
-        height:'80%',
-        marginBottom: 10,
+        width: 200,
+        height:200,
+        
         justifyContent:'center',
         alignItems: 'center'
-    }
+    },
+    Buttons: {
+      borderWidth: 2,
+      padding: 10,
+      borderRadius: 5,
+      flexDirection: 'column',
+      justifyContent: 'center',
+      margin: 10,
+      alignItems: 'center'
+  },
+  text: {
+    fontSize: 20,
+    marginBottom: 10
+  },
+  paralelos: {
+    display: 'flex',
+    flexDirection: 'row'
+  },
+  conteiner: {
+    borderWidth: 2,
+    borderColor: 'black',
+    height: 200,
+    padding: 20,
+    display: 'flex',
+    justifyContent: 'center',
+    borderRadius: 20
+  },
+  
 })

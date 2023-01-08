@@ -33,7 +33,9 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     mapImage: {
-        width: 500,
-        height: 500
+        width: 400,
+        height: 400,
+        borderRadius: 10,
+        marginBottom: 20
     }
 })

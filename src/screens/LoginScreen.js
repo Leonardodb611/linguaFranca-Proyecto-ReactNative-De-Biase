@@ -1,6 +1,8 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
+//Screen en proceso
+
 const LoginScreen = () => {
   return (
     <View>
