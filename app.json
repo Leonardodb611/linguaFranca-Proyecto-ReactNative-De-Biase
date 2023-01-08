@@ -1,34 +1,55 @@
 {
   "expo": {
-    "name": "linguaFranca",
-    "slug": "linguaFranca",
+    "name": "Lingua Franca",
+    "slug": "lingua-franca",
     "version": "1.0.0",
+    "plataforms": [
+      "ios",
+      "android"
+    ],
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/fondo.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/splash1.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#efb6d6"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/39c0e47d-0fd2-463a-801d-2e706ab7da90"
     },
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.Lingua-Franca",
+      "buildNumber": "1.0.0",
       "supportsTablet": true
     },
     "android": {
       "package": "com.linguaFranca",
+      "versionCode": 1,
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      }
+        "foregroundImage": "./assets/splash1.png",
+        "backgroundColor": "#efb6d6"
+      },
+      "permissions": [
+        "ACCESS_FINE_LOCATION",
+        "WRITE_EXTERNAL_STORAGE"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "39c0e47d-0fd2-463a-801d-2e706ab7da90"
+      }
+    },
+    "owner": "leodb611",
+    "runtimeVersion": {
+      "policy": "sdkVersion"
     }
   }
 }

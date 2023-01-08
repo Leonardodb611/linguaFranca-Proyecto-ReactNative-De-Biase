@@ -4,6 +4,7 @@ import AppNavigation from './src/navigation/AppNavigation';
 import { Provider } from 'react-redux';
 import store from './src/store';
 import { init } from './src/db';
+import MainNavigator from './src/navigation/index'
 
 
 init()
@@ -16,7 +17,7 @@ init()
 export default function App() {
   return (
     <Provider store={store}>
-     <AppNavigation style={styles.container} />
+     <MainNavigator style={styles.container} />
     </Provider>
   );
 }

@@ -44,10 +44,7 @@ const LocationSelector = () => {
           setLocation(result.rows._array)
       
     };
-    
-    
-    
-   
+  
 
    const verifyPermissions = async () => {
         const {status} = await Location.requestForegroundPermissionsAsync()
